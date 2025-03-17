@@ -1,14 +1,15 @@
 function alterarStatus(id) {
     let jogo = document.getElementById(`game-${id}`);
+    let imagem = jogo.querySelector('.dashboard__item__img');
     let botao = jogo.querySelector(".dashboard__item__button");
     
-    if (botao.textContent.trim() === "Alugar") {
-        jogo.querySelector('.dashboard__item__img').classList.add('dashboard__item__img--rented');
-        jogo.querySelector('.dashboard__item__button').classList.add('dashboard__item__button--return');
-        botao.innerHTML = "Devolver";
-    } else {
-        jogo.querySelector('.dashboard__item__img').classList.remove('dashboard__item__img--rented');
-        jogo.querySelector('.dashboard__item__button').classList.remove('dashboard__item__button--return');
+    if (imagem.classList.contains('dashboard__item__img--rented') && botao.classList.contains('dashboard__item__button--return')) {
+        imagem.classList.remove('dashboard__item__img--rented');
+        botao.classList.remove('dashboard__item__button--return');
         botao.innerHTML = "Alugar";
+    } else {
+        imagem.classList.add('dashboard__item__img--rented');
+        botao.classList.add('dashboard__item__button--return');
+        botao.innerHTML = "Devolver";
     }
 }
